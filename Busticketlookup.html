@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Ticket Lookup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        input {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bus Ticket Lookup</h1>
+    <input type="text" id="searchInput" placeholder="Enter area name...">
+    <button onclick="searchArea()">Search</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Area</th>
+                <th>Upgoing Number</th>
+                <th>Downgoing Number</th>
+            </tr>
+        </thead>
+        <tbody id="resultTable">
+            <!-- Results will appear here -->
+        </tbody>
+    </table>
+
+    <script>
+        const data = [
+            { area: "Maharagama", up: 9, down: 70 },
+            { area: "Homagama", up: 13, down: 66 },
+            { area: "Godagama", up: 15, down: 64 },
+            { area: "Meepe", up: 19, down: 60 },
+            { area: "Kalu Aggala", up: 23, down: 56 },
+            { area: "Kosgama", up: 26, down: 53 },
+            { area: "Awissawella", up: 31, down: 48 },
+            { area: "Thalduwa", up: 32, down: 47 },
+            { area: "Ihala Thalduwa", up: 33, down: 46 },
+            { area: "Pitadeniya", up: 34, down: 45 },
+            { area: "Dehiowita", up: 35, down: 44 },
+            { area: "Iriya Golla", up: 36, down: 43 },
+            { area: "Atalugama", up: 37, down: 42 },
+            { area: "Maagammana", up: 38, down: 41 },
+            { area: "Karawanella", up: 39, down: 40 },
+            { area: "Kahatagastenna", up: 40, down: 39 },
+            { area: "Ruwanwella", up: 41, down: 38 },
+            { area: "Anguruwella", up: 42, down: 37 },
+            { area: "Warawala", up: 43, down: 36 },
+            { area: "Kananthota", up: 44, down: 35 },
+            { area: "Palowita", up: 45, down: 34 },
+            { area: "Kotiyakumbura", up: 46, down: 33 },
+            { area: "Ampe College", up: 47, down: 32 },
+            { area: "Kurundu Goda", up: 48, down: 31 },
+            { area: "Horagala", up: 50, down: 29 },
+            { area: "Arandala", up: 51, down: 28 },
+            { area: "Hakhinna", up: 52, down: 27 },
+            { area: "Boyagoda", up: 53, down: 26 },
+            { area: "Galigamuwa", up: 54, down: 25 },
+            { area: "Ambanpitiya", up: 55, down: 24 },
+            { area: "Ranwala Handiya", up: 56, down: 23 },
+            { area: "Kegalla", up: 57, down: 22 },
+            { area: "Meepitiya", up: 58, down: 21 },
+            { area: "Karambupana", up: 59, down: 20 },
+            { area: "Molagoda", up: 60, down: 19 },
+            { area: "Mangalagama", up: 61, down: 18 },
+            { area: "Uthuwankanda", up: 62, down: 17 },
+            { area: "Athwarama", up: 63, down: 16 },
+            { area: "Mawanella", up: 64, down: 15 },
+            { area: "Beligammana", up: 65, down: 14 },
+            { area: "Hingula", up: 66, down: 13 },
+            { area: "Ganethenna", up: 67, down: 12 },
+            { area: "Pahala Kadugannawa", up: 68, down: 11 },
+            { area: "Kadugannawa", up: 69, down: 10 },
+            { area: "Gonawala", up: 70, down: 9 },
+            { area: "Ilukwatta", up: 71, down: 8 },
+            { area: "Pilimathlawa", up: 72, down: 7 },
+            { area: "Kiribankumbura", up: 73, down: 6 },
+            { area: "Peradeniya", up: 74, down: 5 },
+            { area: "Getambe", up: 75, down: 4 },
+            { area: "Mulgampala", up: 76, down: 3 },
+            { area: "Katukele", up: 77, down: 2 },
+            { area: "Nuwara", up: 78, down: 1 }
+        ];
+
+        function searchArea() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const results = data.filter(item => item.area.toLowerCase().includes(input));
+            const resultTable = document.getElementById('resultTable');
+            resultTable.innerHTML = '';
+
+            results.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${item.area}</td><td>${item.up}</td><td>${item.down}</td>`;
+                resultTable.appendChild(row);
+            });
+        }
+    </script>
+</body>
+</html>
